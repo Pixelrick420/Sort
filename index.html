@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Array.sort()</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class='container'>
+            <div class='heading'>
+                <h1>Sorting Algorithm Visualization</h1>
+            </div>
+            <div class='main' id='main'>
+
+            </div>
+            <div class='options'>
+                <div class='algorithm'>
+                    <form>
+                        <label for="options">Sorting Algorithm:</label>
+                        <select id="options" name="options">
+                            <option value="1">Bubble Sort</option>
+                            <option value="2">Insertion Sort</option>
+                            <option value="3">Quick Sort</option>
+                            <option value="4">Selection Sort</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class='size_selector'>
+                    <label for="size">Size:</label>
+                    <input type="range" id="size" name="size" min="20" max="45" value="30">
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+
+</html>
