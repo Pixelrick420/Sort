@@ -193,7 +193,7 @@ async function bogosort() {
     if(!issorted){
         while(true){
             if (stopSorting) return;
-            await new Promise(resolve => setTimeout(resolve, shortwait));
+            await new Promise(resolve => setTimeout(resolve, 0.01));
             index1 = Math.floor(Math.random() * array.length);
             index2 = Math.floor(Math.random() * array.length);
             swap(index1, index2);
