@@ -16,15 +16,17 @@ body{
 }
 
 .options{
-    width: 80vh;
+    gap:3vh;
+    width: 150vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 3vh;
 }
 
 .arraymember{
-    width: 1.3vh;
+    width: 20vh;
     background-color: aliceblue;
     border-radius: 2vh;
     margin-bottom: 1vh;
@@ -35,10 +37,10 @@ body{
     align-items: end;
     display: flex;
     flex-direction: row;
-    gap: 1.5vh;
+    gap: 1vh;
     margin-bottom: 5vh;
     height:60vh;
-    width: 160vh;
+    width: 150vh;
     background-color: rgb(26, 26, 26);
     border-radius: 4vh;
 }
@@ -49,8 +51,56 @@ body{
 
 h1{
     font-weight: 900;
+    margin-bottom: 5vh;
+    font-size: 5vh;
 }
 
 .pivot{
     background-color: rgb(33, 76, 218);
+}
+
+select {
+    text-align: center;
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    background-color: aliceblue;
+    border: 2px solid aliceblue;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    width: 25vh;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+select:hover {
+    background-color: #000000;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+
+button {
+    width:20vh;
+    background-color: aliceblue;
+    border: 2px solid aliceblue;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+}
+
+button:hover {
+    background-color: #000000;
+    color: aliceblue;
+    border: 2px solid aliceblue;
 }

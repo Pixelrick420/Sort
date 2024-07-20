@@ -13,7 +13,7 @@
     <body>
         <div class='container'>
             <div class='heading'>
-                <h1>Sorting Algorithm Visualization</h1>
+                <h1 id='heading'>Sorting Algorithm Visualization</h1>
             </div>
             <div class='main' id='main'>
 
@@ -21,7 +21,6 @@
             <div class='options'>
                 <div class='algorithm'>
                     <form>
-                        <label for="options">Sorting Algorithm:</label>
                         <select id="options" name="options">
                             <option value="1">Bubble Sort</option>
                             <option value="2">Insertion Sort</option>
@@ -31,9 +30,13 @@
                     </form>
                 </div>
 
+                <div class='sortorreset'>
+                    <button onclick='sortorreset()'><span id='sortorreset'>Sort</span></button>
+                </div>
+
                 <div class='size_selector'>
                     <label for="size">Size:</label>
-                    <input type="range" id="size" name="size" min="20" max="45" value="30">
+                    <input type="range" id="size" name="size" min="10" max="50" value="20">
                 </div>
             </div>
         </div>
