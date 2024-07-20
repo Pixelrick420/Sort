@@ -60,6 +60,9 @@ async function sort(algorithm) {
         case '4':
             await selectionsort();
             break;
+        case '5':
+            await bogosort();
+            break;
     }
     issorting = false;
 }
@@ -183,6 +186,31 @@ async function selectionsort() {
         if (minIndex != swapIndex) {
             array[minIndex].classList.remove('pivot');
         }
+    }
+}
+
+async function bogosort() {
+    if(!issorted){
+        while(true){
+            if (stopSorting) return;
+            await new Promise(resolve => setTimeout(resolve, shortwait));
+            index1 = Math.floor(Math.random() * array.length);
+            index2 = Math.floor(Math.random() * array.length);
+            swap(index1, index2);
+            let sorted = true;
+            for (let i = 1; i < array.length; i++) {
+                if (parseFloat(array[i - 1].style.height) > parseFloat(array[i].style.height)) {
+                    sorted = false;
+                    break;
+                }
+            }
+
+            if (sorted) {
+                stopSorting = true;
+                issorted = true;
+                break; 
+            }
+        } 
     }
 }
 
