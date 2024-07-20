@@ -12,7 +12,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .options{
@@ -52,7 +52,8 @@ body{
 h1{
     font-weight: 900;
     margin-bottom: 5vh;
-    font-size: 5vh;
+    font-size: 8vh;
+    margin-top: -3vh;
 }
 
 .pivot{
@@ -103,4 +104,8 @@ button:hover {
     background-color: #000000;
     color: aliceblue;
     border: 2px solid aliceblue;
+}
+
+input[type="range"] {
+	width: 25vh;
 }
