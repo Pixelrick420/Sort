@@ -1,5 +1,6 @@
 
 var size;
+const minheight = 50;
 const main = document.getElementById('main');
 var array = [];
 var issorted = false;
@@ -17,17 +18,26 @@ document.getElementById('size').addEventListener('input', function() {
 });
 
 function fill(size){
+    document.getElementById('sortorreset').innerText = 'Sort';
+    stopSorting = true; 
+    issorting = false;
     issorted = false;
+    issorted = false;
+    var nums = [minheight];
+    for(var i=0;i<size;i++){
+        nums.push(nums[nums.length - 1] + (400 / size));
+    }
     main.innerHTML = '';
     array = [];
-    for(var i=0; i<size; i++){
+    for(i=0; i<size; i++){
         const member = document.createElement('div');
         array.push(member);
         member.className = 'arraymember';
         main.appendChild(member);
-        member.style.height = Math.floor((Math.random() * 400 + 50)).toString() + 'px';
+        randIndex = Math.floor(Math.random() * nums.length);
+        member.style.height = nums[randIndex].toString() + 'px';
+        nums.splice(randIndex, 1);
     }
-    console.log(array.length);
 }
 
 window.onload = function() {
@@ -217,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function sortHeading() {
         const spans = Array.from(heading.children);
         for (let i = 0; i < spans.length - 1; i++) {
+            await new Promise(resolve => setTimeout(resolve, shortwait)); 
             for (let j = 0; j < spans.length - 1 - i; j++) {
                 const indexA = parseInt(spans[j].dataset.index);
                 const indexB = parseInt(spans[j + 1].dataset.index);
@@ -230,6 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-
     sortHeading();
 });
+
