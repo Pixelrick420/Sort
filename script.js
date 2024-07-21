@@ -17,26 +17,36 @@ document.getElementById('size').addEventListener('input', function() {
     }   
 });
 
-function fill(size){
+function fill(size, nums=undefined, reorder=true){
     document.getElementById('sortorreset').innerText = 'Sort';
     stopSorting = true; 
     issorting = false;
     issorted = false;
     issorted = false;
-    var nums = [minheight];
-    for(var i=0;i<size;i++){
-        nums.push(nums[nums.length - 1] + (400 / size));
-    }
     main.innerHTML = '';
     array = [];
+
+    if(nums == undefined){
+        nums = [minheight];
+        for(var i=0;i<size;i++){
+            nums.push(nums[nums.length - 1] + (400 / size));
+        }
+    }
+    
     for(i=0; i<size; i++){
         const member = document.createElement('div');
         array.push(member);
         member.className = 'arraymember';
         main.appendChild(member);
-        randIndex = Math.floor(Math.random() * nums.length);
-        member.style.height = nums[randIndex].toString() + 'px';
-        nums.splice(randIndex, 1);
+        if(reorder){
+            randIndex = Math.floor(Math.random() * nums.length);
+            member.style.height = nums[randIndex].toString() + 'px';
+            nums.splice(randIndex, 1);
+        }
+        else{
+            member.style.height = nums[i].toString() + 'px';
+        }
+        
     }
 }
 
@@ -62,6 +72,9 @@ async function sort(algorithm) {
             break;
         case '5':
             await bogosort();
+            break;
+        case '6':
+            await gnomesort();
             break;
     }
     issorting = false;
@@ -213,6 +226,26 @@ async function bogosort() {
         } 
     }
 }
+
+async function gnomesort() {
+    let pos = 0;
+    while (pos < array.length) {
+        if (stopSorting) return; 
+        array[pos].classList.add('selected'); 
+        await new Promise(resolve => setTimeout(resolve, shortwait)); 
+        if (pos === 0 || parseFloat(array[pos].style.height) >= parseFloat(array[pos - 1].style.height)) {
+            array[pos].classList.remove('selected'); 
+            pos += 1;
+        } 
+        else {
+            array[pos].classList.remove('selected'); 
+            await swap(pos, pos - 1);
+            pos -= 1; 
+        }
+    }
+    issorted = true;
+}
+
 
 function sortorreset(){
     var span = document.getElementById('sortorreset');
