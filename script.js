@@ -52,6 +52,7 @@ function fill(size, nums=undefined, reorder=true){
 
 window.onload = function() {
     fill(20);
+    posthog.capture('my event', { property: 'value' })
 };
 
 async function sort(algorithm) {
