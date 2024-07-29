@@ -119,14 +119,13 @@ input[type="range"] {
         margin-top: 5vh;
         width: 90vw;
         padding: 2vh;
+        justify-content: space-between;
     }
 
     .options {
-        position: absolute;
         flex-direction: column;
         gap: 2vh;
         width: 100%;
-        top:80vh;
     }
 
     .arraymember {
@@ -136,12 +135,9 @@ input[type="range"] {
     }
 
     .main {
-        position: absolute;
-        top:20vh;
         width: 110%;
         align-items: center;
-        margin-left: 5vh;
-        margin-right: 5vh;
+        align-self: center;
         height: auto;
         gap: 1px;
         transform: scale(0.8, 1) rotate(-90deg);
@@ -149,8 +145,6 @@ input[type="range"] {
     }
 
     h1 {
-        position: absolute;
-        top: 5vh;
         left:1vh;
         font-size: 4vh;
         margin-top: 0;
