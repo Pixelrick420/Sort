@@ -126,7 +126,7 @@ input[type="range"] {
         flex-direction: column;
         gap: 2vh;
         width: 100%;
-        top:78vh;
+        top:80vh;
     }
 
     .arraymember {
