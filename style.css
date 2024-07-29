@@ -5,6 +5,7 @@ body{
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: bold;
+    overflow-x: hidden;
 }
 
 .container{
@@ -112,6 +113,7 @@ input[type="range"] {
 
 @media (max-width: 768px) {
     html{
+        overflow-x: hidden;
         text-align: center;
     }
 
@@ -120,6 +122,7 @@ input[type="range"] {
         width: 90vw;
         padding: 2vh;
         justify-content: space-between;
+        align-items: center;
     }
 
     .options {
@@ -130,7 +133,7 @@ input[type="range"] {
 
     .arraymember {
         width: 5vh;
-        margin-bottom: 2vh;
+        margin-bottom: 0;
         border-radius: 5vh;
     }
 
