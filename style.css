@@ -126,31 +126,37 @@ input[type="range"] {
         flex-direction: column;
         gap: 2vh;
         width: 100%;
-        top:75vh;
+        top:78vh;
     }
 
     .arraymember {
-        width: 1vh;
+        width: 5vh;
         margin-bottom: 2vh;
+        border-radius: 5vh;
     }
 
     .main {
         position: absolute;
-        top:19vh;
+        top:20vh;
         width: 110%;
         align-items: center;
         margin-left: 5vh;
         margin-right: 5vh;
         height: auto;
         gap: 1px;
-        transform: scale(0.6, 1) rotate(-90deg);
+        transform: scale(0.8, 1) rotate(-90deg);
+        z-index: 1;
     }
 
     h1 {
+        position: absolute;
+        top: 5vh;
+        left:1vh;
         font-size: 4vh;
         margin-top: 0;
         margin-bottom: 3vh;
         width:100%;
+        z-index: 1000;
     }
 
     select, button, input[type="range"] {
