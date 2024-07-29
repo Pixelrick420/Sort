@@ -6,7 +6,7 @@ var array = [];
 var issorted = false;
 var issorting = false;
 var stopSorting = false;
-
+var maxsize = 400;
 var shortwait = 10;
 var longwait = 20;
 
@@ -29,7 +29,7 @@ function fill(size, nums=undefined, reorder=true){
     if(nums == undefined){
         nums = [minheight];
         for(var i=0;i<size;i++){
-            nums.push(nums[nums.length - 1] + (400 / size));
+            nums.push(nums[nums.length - 1] + (maxsize / size));
         }
     }
     
@@ -304,4 +304,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     sortHeading();
 });
-
