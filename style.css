@@ -163,7 +163,7 @@ input[type="range"] {
 
     .size_selector {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
 }
