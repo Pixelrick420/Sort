@@ -77,6 +77,9 @@ async function sort(algorithm) {
         case '6':
             await gnomesort();
             break;
+        case '7':
+            await shakersort();
+            break;
     }
     issorting = false;
 }
@@ -245,6 +248,43 @@ async function gnomesort() {
         }
     }
     issorted = true;
+}
+
+async function shakersort(){
+    if(!issorted){
+        var start = 0;
+        var end = array.length - 1;
+        while(!stopSorting) {
+            stopSorting = 1;
+            for (let i = start; i < end; i++) {
+                array[i].classList.add('selected');
+                array[i + 1].classList.add('selected');
+                await new Promise(resolve => setTimeout(resolve, shortwait)); 
+                if (parseFloat(array[i + 1].style.height) < parseFloat(array[i].style.height)) {
+                    await swap(i, i + 1);
+                    stopSorting = 0;
+                }
+                array[i].classList.remove('selected');
+                array[i + 1].classList.remove('selected');
+            }
+
+            end -= 1;
+        
+            for (let j = end; j > start; j--) {
+                array[j].classList.add('selected');
+                array[j - 1].classList.add('selected');
+                await new Promise(resolve => setTimeout(resolve, shortwait)); 
+                if (parseFloat(array[j - 1].style.height) > parseFloat(array[j].style.height)) {
+                    await swap(j, j - 1);
+                    stopSorting = 0;
+                }
+                array[j].classList.remove('selected');
+                array[j - 1].classList.remove('selected');
+            }
+
+            start += 1;
+        }
+    }
 }
 
 
