@@ -257,14 +257,14 @@ async function shakersort(){
         var start = 0;
         var end = array.length - 1;
         while(!stopSorting) {
-            stopSorting = 1;
+            if (stopSorting) return;
             for (let i = start; i < end; i++) {
+                if (stopSorting) return;
                 array[i].classList.add('selected');
                 array[i + 1].classList.add('selected');
                 await new Promise(resolve => setTimeout(resolve, shortwait)); 
                 if (parseFloat(array[i + 1].style.height) < parseFloat(array[i].style.height)) {
                     await swap(i, i + 1);
-                    stopSorting = 0;
                 }
                 array[i].classList.remove('selected');
                 array[i + 1].classList.remove('selected');
@@ -273,12 +273,12 @@ async function shakersort(){
             end -= 1;
         
             for (let j = end; j > start; j--) {
+                if (stopSorting) return;
                 array[j].classList.add('selected');
                 array[j - 1].classList.add('selected');
                 await new Promise(resolve => setTimeout(resolve, shortwait)); 
                 if (parseFloat(array[j - 1].style.height) > parseFloat(array[j].style.height)) {
                     await swap(j, j - 1);
-                    stopSorting = 0;
                 }
                 array[j].classList.remove('selected');
                 array[j - 1].classList.remove('selected');
