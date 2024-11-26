@@ -80,6 +80,9 @@ async function sort(algorithm) {
         case '7':
             await shakersort();
             break;
+        case '8':
+            await mergesort(array, 0, array.length - 1);
+            break;
     }
     issorting = false;
 }
@@ -140,7 +143,6 @@ async function quicksort(array, left, right) {
     }
 
     var pivotIndex = Math.floor(Math.random() * (right - left + 1)) + left;
-    var pivotValue = parseFloat(array[pivotIndex].style.height);
     
     array[pivotIndex].classList.add('pivot');
     await new Promise(resolve => setTimeout(resolve, shortwait)); 
@@ -286,6 +288,78 @@ async function shakersort(){
         }
     }
 }
+
+async function merge(array, left, mid, right) {
+    const n1 = mid - left + 1;
+    const n2 = right - mid;
+    
+    const leftArr = new Array(n1);
+    const rightArr = new Array(n2);
+    
+    for (let i = 0; i < n1; i++) {
+        leftArr[i] = array[left + i].style.height;
+    }
+    for (let j = 0; j < n2; j++) {
+        rightArr[j] = array[mid + 1 + j].style.height;
+    }
+    
+    let i = 0, j = 0, k = left;
+    
+    while (i < n1 && j < n2) {
+        if (stopSorting) return;  
+        
+        array[k].classList.add('selected');
+        if (k + 1 < array.length) {
+            array[k + 1].classList.add('selected');
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, shortwait)); 
+
+        if (parseFloat(leftArr[i]) <= parseFloat(rightArr[j])) {
+            array[k].style.height = leftArr[i];  
+            i++;
+        } else {
+            array[k].style.height = rightArr[j];  
+            j++;
+        }
+        
+        array[k].classList.remove('selected');
+        if (k + 1 < array.length) {
+            array[k + 1].classList.remove('selected');
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        if (stopSorting) return;
+        array[k].style.height = leftArr[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        if (stopSorting) return;
+        array[k].style.height = rightArr[j];
+        j++;
+        k++;
+    }
+}
+
+async function mergesort(array, left, right) {
+    if (left >= right || stopSorting) return;
+
+    const mid = Math.floor((left + right) / 2);
+    
+    await mergesort(array, left, mid);
+    await mergesort(array, mid + 1, right);
+    
+    await merge(array, left, mid, right);
+
+    if (left === 0 && right === array.length - 1) {
+        issorted = true;
+    }
+}
+
 
 
 function sortorreset(){
