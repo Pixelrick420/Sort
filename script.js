@@ -256,7 +256,9 @@ async function shakersort(){
     if(!issorted){
         var start = 0;
         var end = array.length - 1;
+    
         while(!stopSorting) {
+            var flag = true;
             if (stopSorting) return;
             for (let i = start; i < end; i++) {
                 if (stopSorting) return;
@@ -264,6 +266,7 @@ async function shakersort(){
                 array[i + 1].classList.add('selected');
                 await new Promise(resolve => setTimeout(resolve, shortwait)); 
                 if (parseFloat(array[i + 1].style.height) < parseFloat(array[i].style.height)) {
+                    flag = false;
                     await swap(i, i + 1);
                 }
                 array[i].classList.remove('selected');
@@ -278,12 +281,16 @@ async function shakersort(){
                 array[j - 1].classList.add('selected');
                 await new Promise(resolve => setTimeout(resolve, shortwait)); 
                 if (parseFloat(array[j - 1].style.height) > parseFloat(array[j].style.height)) {
+                    flag = false;
                     await swap(j, j - 1);
                 }
                 array[j].classList.remove('selected');
                 array[j - 1].classList.remove('selected');
             }
-
+            
+            if(flag){
+                return;
+            }
             start += 1;
         }
     }
